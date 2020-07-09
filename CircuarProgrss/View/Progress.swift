@@ -14,7 +14,7 @@ struct ProgressCircularType : View {
     var colors : [Color] = [Color(.redColor),Color(.yellowColor),Color(.greenColor)]
     
     var valueCote : Double = 0
-    var maxValueCote : CGFloat = 0
+    var maxValueCote : Double = 0
     var colorsAuditors : [Color] = [Color(.blueLightColor),Color(.bluMediumColor),Color(.blueAutoColor)]
     
     var body : some View{
@@ -51,7 +51,13 @@ struct ProgressCircularType : View {
                                         
                             Text("\nR$ 0,00").font(.system(size: 13.58)).foregroundColor(Color(.lightBlack))
                             
-                            Text("R$ " + String(format: "%.2f", maxValueCote).replacingOccurrences(of: ".", with: ",")).font(.system(size: 14)).foregroundColor(Color(.lightBlack))
+                            if maxValueCote < 1000 {
+
+                                Text("R$ " + String(maxValueCote).replacingOccurrences(of: ",", with: ".")).font(.system(size: 14)).foregroundColor(Color(.lightBlack)).lineSpacing(10)
+                            } else if maxValueCote > 999 {
+                                Text("R$ " + String(format: "%.3f", maxValueCote / 1000).replacingOccurrences(of: ",", with: ".") + "," + maxValueCote.fractionalPart()).font(.system(size: 14)).foregroundColor(Color(.lightBlack)).lineSpacing(10)
+                                                            
+                            }
                         }
                         ZStack{
                             HStack(alignment: .top,spacing: 1){

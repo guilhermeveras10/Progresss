@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var percentTrimestryIn : CGFloat = 55
     @State var percentAuditors : CGFloat = 65
     @State var valueCote : Double = 138000.15
-    @State var maxValueCote : CGFloat = 212788.15
+    @State var maxValueCote : Double = 212788.18
     @State var valueTotal : CGFloat = 300000.00
     @State var valueUtility : CGFloat = 190000.00
     @State var valueToAprove : CGFloat = 250000.00
